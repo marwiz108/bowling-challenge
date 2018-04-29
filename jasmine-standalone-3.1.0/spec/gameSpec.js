@@ -8,23 +8,42 @@ describe("Bowling Game", function () {
     game = new Game();
   });
 
-  it("can roll and store the pins in an array", function() {
-    game.roll(3);
-    game.roll(2);
-    expect(game.rolls).toEqual([3, 2]);
-  });
+  describe("rolls", function() {
+    it("can roll and store the pins in a frame", function() {
+      game.roll(3);
+      game.roll(2);
+      expect(game.frame).toEqual([3, 2]);
+    });
 
-  it("does not allow more than 2 rolls per frame", function() {
-    game.roll(3);
-    game.roll(4);
-    game.roll(1);
-    expect(game.rolls.length).toEqual(2);
+    it("resets the frame after 2 rolls", function() {
+      game.roll(1);
+      game.roll(3);
+      game.resetFrame();
+      expect(game.frame.length).toEqual(0);
+    });
+
+    it("does not allow more than 2 rolls per frame", function() {
+      game.roll(3);
+      game.roll(4);
+      game.roll(1);
+      expect(game.frame.length).toEqual(1);
+    });
   });
 
   it("calculates score for the current frame", function() {
     game.roll(3);
     game.roll(4);
     expect(game.framescore()).toEqual(7);
+  });
+
+  it("can store each framescore in the match array", function() {
+    game.roll(3);
+    game.roll(4);
+    game.resetFrame();
+    game.roll(5);
+    game.roll(1);
+    game.resetFrame();
+    expect(game.match).toEqual([7, 6]);
   });
 
   // it("can roll all gutter plays", function() {
@@ -48,3 +67,9 @@ describe("Bowling Game", function () {
   // });
 
 });
+
+Game.prototype.fakeRoll = function(pins) {
+  if (this.frame.length < this.MAX_ROLLS) {
+    (this.frame).push(pins);
+  };
+};

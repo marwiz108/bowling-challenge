@@ -1,19 +1,31 @@
 "use strict";
 
 function Game() {
-  this.rolls = [];
+  this.frame = [];
   this.MAX_ROLLS = 2;
+  this.match = []
+  this.MAX_FRAMES = 10;
   this.currentScore = 0;
 };
 
 Game.prototype.roll = function(pins) {
-  if (this.rolls.length < this.MAX_ROLLS) {
-    (this.rolls).push(pins);
+  if (this.frame.length === 2) {
+    this.resetFrame();
+  };
+  if (this.frame.length < this.MAX_ROLLS) {
+    (this.frame).push(pins);
   };
 };
 
+Game.prototype.resetFrame = function () {
+  this.framescore();
+  this.frame = [];
+};
+
 Game.prototype.framescore = function() {
-  return (this.rolls[0] + this.rolls[1]);
+  var result = (this.frame[0] + this.frame[1]);
+  (this.match).push(result);
+  return result;
 };
 
 // Game.prototype.score = function() {
