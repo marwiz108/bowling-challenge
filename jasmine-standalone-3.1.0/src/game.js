@@ -6,9 +6,7 @@ function Game() {
 };
 
 Game.prototype.roll = function(pins) {
-  console.log(this.rolls);
   (this.rolls).push(pins);
-  console.log(this.rolls);
 };
 
 Game.prototype.framescore = function() {
@@ -16,5 +14,8 @@ Game.prototype.framescore = function() {
 };
 
 Game.prototype.score = function() {
-
+  for (var i = 0; i < 20; i++) {
+    this.currentScore += this.rolls[i];
+  };
+  return this.currentScore;
 };
