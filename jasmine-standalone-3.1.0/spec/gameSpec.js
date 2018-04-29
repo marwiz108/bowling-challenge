@@ -45,25 +45,22 @@ describe("Bowling Game", function () {
     expect(game.match).toEqual([7, 6]);
   });
 
+  it("shows final score", function() {
+    for(var i = 0; i < 20; i++) {
+      game.roll(1);
+    };
+    game.resetFrame();
+
+    expect(game.finalScore()).toBe(20);
+  });
+
   it("can roll all gutter plays", function() {
     for(var i = 0; i < 20; i++) {
       game.roll(0);
     };
     game.resetFrame();
 
-    expect(game.score()).toBe(0);
+    expect(game.finalScore()).toBe(0);
   });
-
-  // it("can roll all ones", function() {
-  //   for(var i = 0; i < 20; i++) {
-  //     game.roll(1);
-  //   };
-  //
-  //   expect(game.score()).toBe(20);
-  // });
-
-  // it("has 2 rolls per frame", function() {
-  //
-  // });
 
 });

@@ -28,7 +28,7 @@ Game.prototype.framescore = function() {
   return result;
 };
 
-Game.prototype.score = function() {
+Game.prototype.finalScore = function() {
   for (var i = 0; i < 10; i++) {
     this.currentScore += this.match[i];
   };
