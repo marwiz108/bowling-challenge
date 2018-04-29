@@ -13,7 +13,7 @@ Game.prototype.roll = function(pins) {
 };
 
 Game.prototype.framescore = function() {
-  return this.rolls;
+  return (this.rolls[0] + this.rolls[1]);
 };
 
 // Game.prototype.score = function() {

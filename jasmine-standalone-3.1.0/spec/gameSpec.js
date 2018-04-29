@@ -11,14 +11,20 @@ describe("Bowling Game", function () {
   it("can roll and store the pins in an array", function() {
     game.roll(3);
     game.roll(2);
-    expect(game.framescore()).toEqual([3, 2]);
+    expect(game.rolls).toEqual([3, 2]);
   });
 
   it("does not allow more than 2 rolls per frame", function() {
     game.roll(3);
     game.roll(4);
     game.roll(1);
-    expect(game.framescore()).toEqual([3, 4]);
+    expect(game.rolls.length).toEqual(2);
+  });
+
+  it("calculates score for the current frame", function() {
+    game.roll(3);
+    game.roll(4);
+    expect(game.framescore()).toEqual(7);
   });
 
   // it("can roll all gutter plays", function() {
