@@ -45,14 +45,15 @@ describe("Bowling Game", function () {
     expect(game.match).toEqual([7, 6]);
   });
 
-  // it("can roll all gutter plays", function() {
-  //   for(var i = 0; i < 20; i++) {
-  //     game.roll(0);
-  //   };
-  //
-  //   expect(game.score()).toBe(0);
-  // });
-  //
+  it("can roll all gutter plays", function() {
+    for(var i = 0; i < 20; i++) {
+      game.roll(0);
+    };
+    game.resetFrame();
+
+    expect(game.score()).toBe(0);
+  });
+
   // it("can roll all ones", function() {
   //   for(var i = 0; i < 20; i++) {
   //     game.roll(1);
