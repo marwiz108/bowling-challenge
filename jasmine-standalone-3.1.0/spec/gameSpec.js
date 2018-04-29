@@ -39,10 +39,9 @@ describe("Bowling Game", function () {
   it("can store each framescore in the match array", function() {
     game.roll(3);
     game.roll(4);
-    game.resetFrame();
     game.roll(5);
     game.roll(1);
-    game.resetFrame();
+    game.roll(8);
     expect(game.match).toEqual([7, 6]);
   });
 
@@ -67,9 +66,3 @@ describe("Bowling Game", function () {
   // });
 
 });
-
-Game.prototype.fakeRoll = function(pins) {
-  if (this.frame.length < this.MAX_ROLLS) {
-    (this.frame).push(pins);
-  };
-};

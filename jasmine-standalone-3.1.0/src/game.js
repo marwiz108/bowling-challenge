@@ -24,7 +24,9 @@ Game.prototype.resetFrame = function () {
 
 Game.prototype.framescore = function() {
   var result = (this.frame[0] + this.frame[1]);
+  console.log(this.match);
   (this.match).push(result);
+  console.log(this.match);
   return result;
 };
 
